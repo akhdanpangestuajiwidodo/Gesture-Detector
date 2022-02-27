@@ -66,6 +66,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   posY += delta;
                 });
               },
+              onHorizontalDragUpdate: (DragUpdateDetails details) {
+                setState(() {
+                  double delta = details.delta.dx;
+                  posX += delta;
+                });
+              },
               child: Container(
                 width: boxSize,
                 height: boxSize,
