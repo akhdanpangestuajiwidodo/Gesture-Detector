@@ -35,7 +35,19 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('Gesture Detector'),
       ),
-      body: Center(),
+      body: Center(
+        child: Container(
+          width: boxSize,
+          height: boxSize,
+          decoration: BoxDecoration(color: Colors.red),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        color: Colors.yellow,
+        padding: EdgeInsets.all(16.0),
+        child: Text('Taps: 0 - Double Taps: 0 - Long Press: 0',
+        style: Theme.of(context).textTheme.headline6,),
+      ),
     );
   }
   
