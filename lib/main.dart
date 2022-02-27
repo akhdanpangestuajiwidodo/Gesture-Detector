@@ -31,32 +31,49 @@ class _MyHomePageState extends State<MyHomePage> {
   int numTaps = 0;
   int numDoubleTaps = 0;
   int numLongPress = 0;
+  double posX = 0.0;
+  double posY = 0.0;
 
   @override
   Widget build(BuildContext context) {
+    if(posX == 0){
+      center(context);
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text('Gesture Detector'),
       ),
-      body: Center(
-        child: GestureDetector(
-          onTap: (){
-            setState(() {
-              numTaps++;
-            });
-          },
-          onDoubleTap: (){
-            numDoubleTaps++;
-          },
-          onLongPress: (){
-           numLongPress++;
-          },
-          child: Container(
-            width: boxSize,
-            height: boxSize,
-            decoration: BoxDecoration(color: Colors.red),
+      body: Stack(
+        children: [
+          Positioned(
+            top: posY,
+            left: posX,
+            child: GestureDetector(
+              onTap: (){
+                setState(() {
+                  numTaps++;
+                });
+              },
+              onDoubleTap: (){
+                numDoubleTaps++;
+              },
+              onLongPress: (){
+                numLongPress++;
+              },
+              onVerticalDragUpdate: (DragUpdateDetails details){
+                setState(() {
+                  double delta = details.delta.dy;
+                  posY += delta;
+                });
+              },
+              child: Container(
+                width: boxSize,
+                height: boxSize,
+                decoration: BoxDecoration(color: Colors.red),
+              ),
+            ),
           ),
-        ),
+        ],
       ),
       bottomNavigationBar: Container(
         color: Colors.yellow,
@@ -65,6 +82,16 @@ class _MyHomePageState extends State<MyHomePage> {
         style: Theme.of(context).textTheme.headline6,),
       ),
     );
+  }
+
+  void center(BuildContext context){
+    posX = (MediaQuery.of(context).size.width / 2) - boxSize /2;
+    posY = (MediaQuery.of(context).size.height / 2) - boxSize /2 - 30;
+
+    setState(() {
+      this.posX = posX;
+      this.posY = posY;
+    });
   }
   
 }
