@@ -36,10 +36,12 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Gesture Detector'),
       ),
       body: Center(
-        child: Container(
-          width: boxSize,
-          height: boxSize,
-          decoration: BoxDecoration(color: Colors.red),
+        child: GestureDetector(
+          child: Container(
+            width: boxSize,
+            height: boxSize,
+            decoration: BoxDecoration(color: Colors.red),
+          ),
         ),
       ),
       bottomNavigationBar: Container(
