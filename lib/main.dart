@@ -30,6 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final double boxSize = 150.0;
   int numTaps = 0;
   int numDoubleTaps = 0;
+  int numLongPress = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +48,9 @@ class _MyHomePageState extends State<MyHomePage> {
           onDoubleTap: (){
             numDoubleTaps++;
           },
+          onLongPress: (){
+           numLongPress++;
+          },
           child: Container(
             width: boxSize,
             height: boxSize,
@@ -57,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: Container(
         color: Colors.yellow,
         padding: EdgeInsets.all(16.0),
-        child: Text('Taps: $numTaps - Double Taps: $numDoubleTaps - Long Press: 0',
+        child: Text('Taps: $numTaps - Double Taps: $numDoubleTaps - Long Press: $numLongPress',
         style: Theme.of(context).textTheme.headline6,),
       ),
     );
