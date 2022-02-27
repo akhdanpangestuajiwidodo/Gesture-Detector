@@ -28,6 +28,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final double boxSize = 150.0;
+  int numTaps = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +38,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: GestureDetector(
+          onTap: (){
+            setState(() {
+              numTaps++;
+            });
+          },
           child: Container(
             width: boxSize,
             height: boxSize,
@@ -47,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: Container(
         color: Colors.yellow,
         padding: EdgeInsets.all(16.0),
-        child: Text('Taps: 0 - Double Taps: 0 - Long Press: 0',
+        child: Text('Taps: $numTaps - Double Taps: 0 - Long Press: 0',
         style: Theme.of(context).textTheme.headline6,),
       ),
     );
