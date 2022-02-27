@@ -60,16 +60,24 @@ class _MyHomePageState extends State<MyHomePage> {
               onLongPress: (){
                 numLongPress++;
               },
-              onVerticalDragUpdate: (DragUpdateDetails details){
+              // onVerticalDragUpdate: (DragUpdateDetails details){
+              //   setState(() {
+              //     double delta = details.delta.dy;
+              //     posY += delta;
+              //   });
+              // },
+              // onHorizontalDragUpdate: (DragUpdateDetails details) {
+              //   setState(() {
+              //     double delta = details.delta.dx;
+              //     posX += delta;
+              //   });
+              // },
+              onPanUpdate: (DragUpdateDetails details){
                 setState(() {
-                  double delta = details.delta.dy;
-                  posY += delta;
-                });
-              },
-              onHorizontalDragUpdate: (DragUpdateDetails details) {
-                setState(() {
-                  double delta = details.delta.dx;
-                  posX += delta;
+                  double deltaY = details.delta.dy;
+                  double deltaX = details.delta.dx;
+                  posX += deltaX;
+                  posY += deltaY;
                 });
               },
               child: Container(
